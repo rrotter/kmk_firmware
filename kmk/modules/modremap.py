@@ -123,13 +123,17 @@ class ModRemap(Module):
                 last_key = self.last_pressed_key
                 new_last_pressed_kc = last_key.meta.get_key(last_key.meta, self.virtual_mods)
 
+                # remove the keycode now, unless it has the same base key, then just sway it out
                 if new_last_pressed_kc != self.last_pressed_kc:
                     keyboard.keys_pressed.discard(self.last_pressed_kc)
-                    keyboard.keys_pressed.add(new_last_pressed_kc)
-
                     self.held.discard(self.last_pressed_kc)
-                    self.last_pressed_kc = new_last_pressed_kc
-                    self.held.add(new_last_pressed_kc)
+
+                    if new_last_pressed_kc.code == self.last_pressed_kc.code:
+                        keyboard.keys_pressed.add(new_last_pressed_kc)
+                        self.last_pressed_kc = new_last_pressed_kc
+                        self.held.add(new_last_pressed_kc)
+                    else:
+                        self.last_pressed_kc = None
 
         # handle other key down events
         # Clean up state when we get a non-internal key
