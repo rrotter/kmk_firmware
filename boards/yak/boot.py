@@ -1,0 +1,5 @@
+import storage
+import usb_midi
+
+storage.disable_usb_drive()
+usb_midi.disable()
