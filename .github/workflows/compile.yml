@@ -1,7 +1,7 @@
 name: Build
 on:
   push:
-    branches: ['main', 'master']
+    branches: ['yak']
 env:
   mpy-cross-path: "https://adafruit-circuit-python.s3.amazonaws.com/bin/mpy-cross/"
   mpy-cross-name: "mpy-cross.static-amd64-linux-"
@@ -34,11 +34,13 @@ jobs:
 
       - name: compile
         run: PATH=.:$PATH make compile
+      - name: bulid yak
+        run: mv .compiled/kmk boards/yak/kmk; cp -r kmkx boards/yak/kmkx
       - name: List build dir
         run: |
-          ls -la .compiled/kmk/
+          ls -lar boards/yak
       - name: upload zip
         uses: actions/upload-artifact@v3
         with:
-          name: kmk-${{ steps.sha.outputs.SHA }}+mpy-cross-${{ env.mpy-cross-8-release }}
-          path: .compiled/kmk/
+          name: kmk-yak-${{ steps.sha.outputs.SHA }}
+          path: boards/yak

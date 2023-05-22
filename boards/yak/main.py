@@ -34,14 +34,14 @@ RETURN  = KC.ENTER
 
 keyboard.keymap = [
     [  # 0: Colemak-DH
-        'GRV',   lprn,   rprn, 'MINS',  'EQL',     at,         DELETE,  caret,  slash,   lbrc,   rbrc, dollar,
+        'GRV',   lprn,   rprn, 'MINS',  'EQL',     at,         DELETE,  caret, dollar,   lbrc,   rbrc,XXXXXXX,
         'TAB',    'Q',    'W',    'F',    'P',    'B',            'J',    'L',     Ü ,    'Y',   bang,   bsls,
       CTL_ESC,     Ä ,    'R',    'S',    'T',    'G',            'M',    'N',    'E',    'I',     Ö , 'QUOT',
-       'LSFT',    'Z',    'X',    'C',    'D',    'V',            'K',    'H',  comma,    dot,XXXXXXX, 'RSFT',
+       'LSFT',    'Z',    'X',    'C',    'D',    'V',            'K',    'H',  comma,    dot,  slash, 'RSFT',
                      KC.MO(1), 'LOPT', 'LCMD',   RETURN,    'SPACE',   'RCMD', 'ROPT',KC.MO(2),
     ],
     [
-      _______,_______,_______,_______,_______,_______,        _______,_______,_______,_______,_______,_______,
+      _______,_______,_______,_______,_______,_______,         KC.DEL,_______,_______,_______,_______,_______,
       _______,_______,_______,_______,_______,_______,        _______,  KC.N7,  KC.N8,  KC.N9,_______,_______,
       _______,_______,_______,_______,_______,_______,        _______,  KC.N4,  KC.N5,  KC.N6,_______,_______,
       _______,_______,_______,_______,_______,_______,        _______,  KC.N1,  KC.N2,  KC.N3,_______,_______,
